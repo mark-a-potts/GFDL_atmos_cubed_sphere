@@ -841,13 +841,14 @@ contains
           Atm(n)%bk(1:npz+1) = bk(itoa:levp+1)
           call set_external_eta (Atm(n)%ak, Atm(n)%bk, Atm(n)%ptop, Atm(n)%ks)
         else
-          if ( npz <= 64 ) then
-             Atm(n)%ak(:) = ak_sj(:)
-             Atm(n)%bk(:) = bk_sj(:)
-             Atm(n)%ptop = Atm(n)%ak(1)
-          else
-             call set_eta(npz, ks, Atm(n)%ptop, Atm(n)%ak, Atm(n)%bk)
-          endif
+!          if ( npz <= 64 ) then
+!             Atm(n)%ak(:) = ak_sj(:)
+!             Atm(n)%bk(:) = bk_sj(:)
+!             Atm(n)%ptop = Atm(n)%ak(1)
+!          else
+!             call set_eta(npz, ks, Atm(n)%ptop, Atm(n)%ak, Atm(n)%bk)
+!          endif
+
         endif
         ! call vertical remapping algorithms
         if(is_master())  write(*,*) 'GFS ak =', ak,' FV3 ak=',Atm(n)%ak
@@ -1581,13 +1582,13 @@ contains
 
       
 ! Set up model's ak and bk
-      if ( npz <= 64 ) then
-         Atm(1)%ak(:) = ak_sj(:)
-         Atm(1)%bk(:) = bk_sj(:)
-         Atm(1)%ptop = Atm(1)%ak(1)
-      else
-         call set_eta(npz, ks, Atm(1)%ptop, Atm(1)%ak, Atm(1)%bk)
-      endif
+!      if ( npz <= 64 ) then
+!         Atm(1)%ak(:) = ak_sj(:)
+!         Atm(1)%bk(:) = bk_sj(:)
+!         Atm(1)%ptop = Atm(1)%ak(1)
+!      else
+!         call set_eta(npz, ks, Atm(1)%ptop, Atm(1)%ak, Atm(1)%bk)
+!      endif
 
 !! Read in model terrain from oro_data.tile?.nc
       if (filtered_terrain) then
